@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devce-width, initial-scale=1">
+    <title>Chat Con Node Js </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+   
+</head>
+<body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+
+<script >
+
+    var App = {};
+    App.ws = io('http://localhost:3000', {
+     path: '/'
+    });
+
+    App.ws.on('s',function(){
+        console.log("Se conecto al chat");
+    });
+
+    $(document).on('write',function () {
+        App.ws.emit('writing',nombreU);
+    });
+</script>
+</body>
+</html>
